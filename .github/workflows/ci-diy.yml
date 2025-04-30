@@ -54,7 +54,7 @@ jobs:
           echo '" Redis for Windows Project Home \n"' >> asciilogo.h
           echo '" https://github.com/redis-windows/redis-windows  \n\n";' >> asciilogo.h
           cd ..
-          make BUILD_TLS=yes CFLAGS="-Wno-char-subscripts -O3" LDFLAGS="-fomit-frame-pointer -Wl,-z,relro,-x,-s,--strip-all,-z,now" -j8
+          make BUILD_TLS=yes CFLAGS="-Wno-char-subscripts -O3" LDFLAGS="-fomit-frame-pointer -Wl,-x,-s,--strip-all" -j8
           find . -mindepth 1 -maxdepth 2 -type f -regex '.*\(\.exe\|\.conf\)' -exec cp -f "{}" "$workspace/${{ env.REDIS_DIST }}-msys2" \;
           cd $workspace
           cp README.md README.zh_CN.md start.bat /usr/bin/msys-2.0.dll /usr/bin/msys-crypto-3.dll /usr/bin/msys-ssl-3.dll ${{ env.REDIS_DIST }}-msys2
@@ -92,7 +92,7 @@ jobs:
           echo '" Redis for Windows Project Home \n"' >> asciilogo.h ;
           echo '" https://github.com/redis-windows/redis-windows  \n\n";' >> asciilogo.h ;
           cd .. ;
-          make BUILD_TLS=yes CFLAGS="-Wno-char-subscripts -O3" LDFLAGS="-fomit-frame-pointer -Wl,-z,relro,-x,-s,--strip-all,-z,now" -j8 ;
+          make BUILD_TLS=yes CFLAGS="-Wno-char-subscripts -O3" LDFLAGS="-fomit-frame-pointer -Wl,-x,-s,--strip-all" -j8 ;
           find . -mindepth 1 -maxdepth 2 -type f -regex '.*\(\.exe\|\.conf\)' -exec cp -f "{}" "$workspace/${{ env.REDIS_DIST }}-cygwin" \; ;
           cd $workspace ;
           cp README.md README.zh_CN.md start.bat /bin/cygcrypto-3.dll /bin/cygwin1.dll /bin/cygssl-3.dll /bin/cygz.dll ${{ env.REDIS_DIST }}-cygwin ;
